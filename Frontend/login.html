@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MediQ | Login</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* BACKGROUND */
+
+body{
+
+margin:0;
+font-family:'Poppins', sans-serif;
+
+background: linear-gradient(135deg,#0f2027,#203a43,#0077cc,#00c6ff);
+
+height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+}
+
+/* CONTAINER */
+
+.container{
+
+display:flex;
+
+width:850px;
+
+background:white;
+
+border-radius:15px;
+
+overflow:hidden;
+
+box-shadow:0 10px 40px rgba(0,0,0,0.3);
+
+}
+
+/* LEFT IMAGE */
+
+.left{
+
+flex:1;
+
+background:url("https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=1000");
+
+background-size:cover;
+background-position:center;
+
+}
+
+/* RIGHT LOGIN */
+
+.right{
+
+flex:1;
+
+padding:40px;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+
+}
+
+/* TITLE */
+
+.right h2{
+
+color:#0077cc;
+margin-bottom:10px;
+
+}
+
+.right p{
+
+color:#666;
+margin-bottom:25px;
+
+}
+
+/* INPUT */
+
+input{
+
+width:100%;
+
+padding:12px;
+
+margin-bottom:15px;
+
+border-radius:6px;
+
+border:1px solid #ccc;
+
+font-size:16px;
+
+}
+
+/* BUTTON */
+
+button{
+
+padding:12px;
+
+background: linear-gradient(90deg,#0077cc,#00c6ff);
+
+border:none;
+
+color:white;
+
+font-size:16px;
+
+border-radius:6px;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+button:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+
+}
+
+/* REGISTER */
+
+.register{
+
+margin-top:15px;
+
+font-size:14px;
+
+}
+
+.register a{
+
+color:#0077cc;
+text-decoration:none;
+
+font-weight:600;
+
+}
+
+/* RESULT */
+
+#goback{
+    color:#0f2027;
+
+}
+
+#result{
+
+margin-top:10px;
+
+font-weight:600;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="left"></div>
+
+<div class="right">
+
+<h2>Welcome to MediQ</h2>
+
+<p>Please login to access your healthcare dashboard</p>
+
+<input type="text" id="username" placeholder="Username">
+
+<input type="password" id="password" placeholder="Password">
+
+
+<button onclick="login()">Login</button><br>
+
+
+<p id="result"></p>
+
+<div class="register">
+
+Don't have an account? <a href="#">Register</a><br>
+
+<!-- <div class="index1.html">
+
+<a href="#">Go Back Home</a>
+
+<a href="index1.html"><button>go back home</button></a> -->
+<div id="goback">
+
+<a href="index1.html">Go Back Home</a>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+async function login(){
+
+const username = document.getElementById("username").value;
+
+const password = document.getElementById("password").value;
+
+const response = await fetch("http://localhost:8080/login",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body: JSON.stringify({
+
+username: username,
+password: password
+
+})
+
+});
+
+const result = await response.text();
+
+if(result==="success"){
+
+document.getElementById("result").style.color="green";
+document.getElementById("result").innerText="Login successful";
+
+window.location.href="dashboard.html";
+
+}else{
+
+document.getElementById("result").style.color="red";
+document.getElementById("result").innerText="Invalid credentials";
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body with blue gradient */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #2c5364, #4facfe, #00c6ff);
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background: rgba(255,255,255,0.95);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.navbar h1 {
+    color: #0077b6;
+    font-size: 26px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+.navbar a:hover {
+    color: #0077b6;
+}
+
+/* Main container */
+.container {
+    background: white;
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+/* Headings */
+h1 {
+    color: #0077b6;
+    margin-bottom: 15px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(45deg, #0077b6, #00c6ff);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    margin-top: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(45deg, #023e8a, #0096c7);
+}
+
+/* Login form */
+.login-box {
+    max-width: 400px;
+    margin: auto;
+    text-align: left;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+.login-box input:focus {
+    border-color: #0077b6;
+    outline: none;
+}
+
+/* Dashboard cards */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.card {
+    background: #f8fbff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Image collage */
+.collage {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.collage img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.collage img:hover {
+    transform: scale(1.05);
+}
+
+/* Hero image */
+.hero-img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Result text */
+#result {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #0077b6;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+}

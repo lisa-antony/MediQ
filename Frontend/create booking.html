@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Booking</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Enter Patient Details</h1>
+
+<form onsubmit="submitForm(event)">
+
+<input type="text" id="name" placeholder="Patient Name" required>
+<br><br>
+
+<input type="number" id="age" placeholder="Patient Age" required>
+<br><br>
+
+<button type="submit">Book Appointment</button>
+
+</form>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const doctorId = params.get("doctorId");
+
+const slot = params.get("slot");
+
+function submitForm(event)
+{
+    event.preventDefault();
+
+    fetch("/book", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+
+            patientName:
+            document.getElementById("name").value,
+
+            patientAge:
+            document.getElementById("age").value,
+
+            doctorId: doctorId,
+
+            slot: slot
+        })
+
+    })
+
+    .then(res => res.json())
+
+    .then(data => {
+
+        window.location = "success.html";
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

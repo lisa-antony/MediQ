@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MediQ | Smart Healthcare Queue Management</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* BODY WITH PROFESSIONAL BLUE GRADIENT */
+
+body{
+margin:0;
+font-family:'Poppins', sans-serif;
+
+background: linear-gradient(
+135deg,
+#0f2027,
+#203a43,
+#2c5364,
+#0077cc,
+#00c6ff
+);
+
+background-size: 400% 400%;
+animation: gradientMove 12s ease infinite;
+
+color:#333;
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* NAVBAR */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+
+background: rgba(255,255,255,0.95);
+backdrop-filter: blur(10px);
+
+box-shadow:0 2px 15px rgba(0,0,0,0.1);
+}
+
+.logo{
+font-size:26px;
+font-weight:600;
+color:#0077cc;
+}
+
+nav a{
+margin-left:30px;
+text-decoration:none;
+color:#333;
+font-weight:500;
+}
+
+nav a:hover{
+color:#0077cc;
+}
+
+/* HERO SECTION */
+
+.hero{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:80px 60px;
+margin:40px;
+
+background: rgba(255,255,255,0.95);
+
+border-radius:15px;
+
+box-shadow:0 8px 30px rgba(0,0,0,0.2);
+
+}
+
+.hero-text{
+max-width:550px;
+}
+
+.hero-text h1{
+font-size:42px;
+color:#0077cc;
+margin-bottom:15px;
+}
+
+.hero-text p{
+font-size:18px;
+line-height:1.6;
+margin-bottom:25px;
+color:#444;
+}
+
+.hero-text button{
+
+padding:14px 28px;
+
+font-size:16px;
+
+background: linear-gradient(90deg,#0077cc,#00c6ff);
+
+color:white;
+
+border:none;
+
+border-radius:6px;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+.hero-text button:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+
+}
+
+/* RESULT */
+
+#result{
+margin-top:15px;
+font-weight:600;
+color:#0077cc;
+}
+
+/* HERO IMAGE */
+
+.hero img{
+
+width:480px;
+
+border-radius:12px;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+
+}
+
+/* FEATURES */
+
+.features{
+
+padding:60px;
+
+margin:40px;
+
+background: rgba(255,255,255,0.95);
+
+border-radius:15px;
+
+text-align:center;
+
+}
+
+.features h2{
+font-size:32px;
+margin-bottom:40px;
+}
+
+.feature-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:25px;
+
+}
+
+.feature-card{
+
+background:white;
+
+padding:25px;
+
+border-radius:10px;
+
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+
+}
+
+.feature-card img{
+
+width:60px;
+
+margin-bottom:15px;
+
+}
+
+/* FOOTER */
+
+footer{
+
+background: rgba(0,0,0,0.6);
+
+color:white;
+
+text-align:center;
+
+padding:25px;
+
+margin-top:40px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header>
+
+<div class="logo">MediQ</div>
+
+<nav>
+
+<a href="index1.html">Home</a>
+<a href="dashboard.html">Features</a>
+<a href="dashboard.html">Services</a>
+<a href="#">Contact</a>
+
+</nav>
+
+</header>
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>Smart Healthcare Queue Management</h1>
+
+<p>
+
+MediQ is a modern digital platform designed to streamline patient flow and eliminate unnecessary waiting times in healthcare facilities.
+
+Patients can schedule appointments, monitor queue status in real time, and receive accurate service timelines while hospitals improve operational efficiency and patient satisfaction.
+
+</p>
+
+<a href="login.html">
+<button onclick="">LOGIN</button></a>
+
+<p id="result"></p>
+
+</div>
+
+<img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1000">
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<h2>Platform Capabilities</h2>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<img src="https://cdn-icons-png.flaticon.com/512/2785/2785544.png">
+
+<h3>Real-Time Queue Tracking</h3>
+
+<p>Monitor your position in the service queue with live updates.</p>
+
+</div>
+
+<div class="feature-card">
+
+<img src="https://cdn-icons-png.flaticon.com/512/2921/2921822.png">
+
+<h3>Remote Appointment Booking</h3>
+
+<p>Schedule visits securely from anywhere.</p>
+
+</div>
+
+<div class="feature-card">
+
+<img src="https://cdn-icons-png.flaticon.com/512/3059/3059518.png">
+
+<h3>Operational Efficiency</h3>
+
+<p>Improves hospital workflow and patient management.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 MediQ Healthcare Systems | Intelligent Patient Flow Management
+
+</footer>
+
+<script>
+
+function book(){
+
+fetch("http://localhost:8080/book")
+
+.then(res=>res.text())
+
+.then(data=>{
+
+document.getElementById("result").innerText =
+"Appointment Confirmed — " + data;
+
+});
+
+}
+
+</script>
+
+</body>
+
+</html>

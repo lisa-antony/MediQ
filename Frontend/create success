@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Success</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Appointment Booked Successfully</h1>
+
+<a href="dashboard.html">
+Go to Dashboard
+</a>
+
+</body>
+</html>

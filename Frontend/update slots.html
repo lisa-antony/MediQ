@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Slots</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Select Slot</h1>
+
+<div id="slots"></div>
+
+<script>
+
+const urlParams = new URLSearchParams(window.location.search);
+
+const doctorId = urlParams.get("id");
+
+fetch("/slots/" + doctorId)
+.then(res => res.json())
+.then(data => {
+
+    let div = document.getElementById("slots");
+
+    data.forEach(slot => {
+
+        div.innerHTML += `
+        <div class="card" onclick="bookSlot('${slot}')">
+            ${slot}
+        </div>
+        `;
+
+    });
+
+});
+
+function bookSlot(slot)
+{
+    window.location =
+    "booking.html?doctorId=" + doctorId + "&slot=" + slot;
+}
+
+</script>
+
+</body>
+</html>

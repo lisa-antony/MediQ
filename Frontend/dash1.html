@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MediQ Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <h1>MediQ</h1>
+    <div>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+</div>
+
+<!-- Main Container -->
+<div class="container">
+
+    <h1>Welcome to MediQ Dashboard</h1>
+    <p>Your smart medical appointment management system.</p>
+
+    <!-- Hero Image -->
+    <img src="images/hospital.jpg" class="hero-img" alt="Hospital">
+
+    <!-- Cards Section -->
+    <div class="card-container">
+
+        <!-- Book Appointment Card -->
+        <div class="card">
+            <h2>Book Appointment</h2>
+            <p>Schedule your visit quickly with available doctors.</p>
+            <button onclick="bookAppointment()">Book Now</button>
+        </div>
+
+        <!-- View Status Card -->
+        <div class="card">
+            <h2>Appointment Status</h2>
+            <p>Check your current appointment details.</p>
+            <button onclick="viewStatus()">View Status</button>
+        </div>
+
+        <!-- Doctor Availability -->
+        <div class="card">
+            <h2>Doctor Availability</h2>
+            <p>See available doctors and time slots.</p>
+            <button onclick="checkDoctors()">Check Doctors</button>
+        </div>
+
+    </div>
+
+    <!-- Result Display -->
+    <p id="result"></p>
+
+    <!-- Image Collage -->
+    <div class="collage">
+        <img src="images/doctor1.jpg">
+        <img src="images/doctor2.jpg">
+        <img src="images/hospital2.jpg">
+        <img src="images/patient.jpg">
+    </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    MediQ © 2026 | Smart Healthcare Solution
+</div>
+
+
+<script>
+
+/* Book Appointment */
+function bookAppointment(){
+
+    fetch("http://localhost:8080/book")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("result").innerText = data;
+    })
+    .catch(error => {
+        document.getElementById("result").innerText = "Server not connected.";
+    });
+
+}
+
+/* View Status */
+function viewStatus(){
+
+    fetch("http://localhost:8080/status")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("result").innerText = data;
+    })
+    .catch(error => {
+        document.getElementById("result").innerText = "Unable to fetch status.";
+    });
+
+}
+
+/* Check Doctors */
+function checkDoctors(){
+
+    fetch("http://localhost:8080/doctors")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("result").innerText = data;
+    })
+    .catch(error => {
+        document.getElementById("result").innerText = "Unable to fetch doctor list.";
+    });
+
+}
+
+/* Logout */
+function logout(){
+
+    alert("Logged out successfully!");
+    window.location.href = "login.html";
+
+}
+
+</script>
+
+</body>
+</html>
