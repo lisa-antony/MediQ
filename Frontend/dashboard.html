@@ -32,9 +32,6 @@
             healthcare without waiting in queues.
         </p>
 
-        <img src="images/hospital.jpg"
-             alt="Modern Hospital"
-             class="hero-img">
     </section>
 
 
@@ -84,15 +81,7 @@
     </section>
 
 
-    <!-- IMAGE COLLAGE -->
-    <section class="collage">
 
-        <img src="images/doctor1.jpg" alt="Doctor">
-        <img src="images/doctor2.jpg" alt="Medical Team">
-        <img src="images/hospital2.jpg" alt="Hospital Building">
-        <img src="images/patient.jpg" alt="Patient Care">
-
-    </section>
 
 </main>
 
@@ -125,8 +114,7 @@ async function bookAppointment(){
 
     try {
 
-        const response = await fetch("http://localhost:8080/book");
-
+        const response = window.location.href="create%20booking.html?doctorId=123&slot=10AM-11AM";
         if(!response.ok)
             throw new Error();
 
@@ -180,9 +168,15 @@ async function checkDoctors(){
         if(!response.ok)
             throw new Error();
 
-        const data = await response.text();
+        const doctors = await response.json();
 
-        showMessage(data);
+        let output = "";
+
+        doctors.forEach(doc => {
+         output += `${doc.name} - ${doc.specialty} (${doc.available ?       "Available" : "Not Available"})\n`;
+});
+
+showMessage(output);
 
     }
     catch{

@@ -1,71 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Booking</title>
-<link rel="stylesheet" href="style.css">
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Appointment</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    padding: 40px;
+}
+
+.booking-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    padding: 50px 40px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.sub-info {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #d0eaff;
+    font-size: 14px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+input:focus {
+    box-shadow: 0 0 0 2px #4da6ff;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: none;
+    background: #4da6ff;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #1a8cff;
+    transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+
+</head>
 <body>
 
-<h1>Enter Patient Details</h1>
+<div class="booking-card">
+
+<h1>Book Your Appointment</h1>
+<div class="sub-info" id="doctorInfo"></div>
 
 <form onsubmit="submitForm(event)">
 
+<div class="form-group">
 <input type="text" id="name" placeholder="Patient Name" required>
-<br><br>
+</div>
 
+<div class="form-group">
 <input type="number" id="age" placeholder="Patient Age" required>
-<br><br>
+</div>
 
-<button type="submit">Book Appointment</button>
+<a href="create success">
+<button type="submit">Confirm Booking</button></a>
 
 </form>
 
+</div>
+
 <script>
-
 const params = new URLSearchParams(window.location.search);
-
 const doctorId = params.get("doctorId");
-
 const slot = params.get("slot");
+
+document.getElementById("doctorInfo").innerText =
+    "Doctor ID: " + doctorId + " | Slot: " + slot;
 
 function submitForm(event)
 {
     event.preventDefault();
 
-    fetch("/book", {
-
+    fetch("http://localhost:8080/book", {
         method: "POST",
-
-        headers: {
-            "Content-Type": "application/json"
-        },
-
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-
-            patientName:
-            document.getElementById("name").value,
-
-            patientAge:
-            document.getElementById("age").value,
-
+            patientName: document.getElementById("name").value,
+            patientAge: document.getElementById("age").value,
             doctorId: doctorId,
-
             slot: slot
         })
-
     })
-
     .then(res => res.json())
-
     .then(data => {
-
         window.location = "success.html";
-
     });
-
 }
-
 </script>
 
 </body>
