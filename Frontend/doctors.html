@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Doctors List</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    padding: 40px;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.card {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.slot {
+    display: inline-block;
+    background: #2a5298;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    margin: 5px 5px 0 0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.slot:hover {
+    background: #1e3c72;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Available Doctors</h1>
+
+<div class="container" id="doctorList"></div>
+
+<script>
+async function loadDoctors() {
+
+    try {
+        const response = await fetch("http://localhost:8080/doctors");
+        const doctors = await response.json();
+
+        const container = document.getElementById("doctorList");
+        container.innerHTML = "";
+
+        doctors.forEach(doc => {
+
+            let slotsHTML = "";
+
+            doc.availableSlots.forEach(slot => {
+                slotsHTML += `
+                    <span class="slot"
+                    onclick="book('${doc._id}','${slot}')">
+                    ${slot}
+                    </span>`;
+            });
+
+            container.innerHTML += `
+                <div class="card">
+                    <h3>${doc.name}</h3>
+                    <p><strong>Specialty:</strong> ${doc.specialty}</p>
+                    <p><strong>Available Times:</strong></p>
+                    ${slotsHTML}
+                </div>
+            `;
+        });
+
+    } catch {
+        document.getElementById("doctorList").innerHTML =
+            "<p>Unable to load doctors.</p>";
+    }
+}
+
+function book(doctorId, slot) {
+    window.location =
+    `booking.html?doctorId=${doctorId}&slot=${slot}`;
+}
+
+loadDoctors();
+</script>
+
+</body>
+</html>
