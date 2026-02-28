@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node Backend/server.js/node.js",
+    "start": "node Backend/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  },    
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aeinphilamiin/MediQ.git"
