@@ -27,7 +27,7 @@ app.post("/book", async (req, res) => {
     });
 
     res.json(booking);
-});
+})
 .then(data => {
     window.location = `status.html?id=${data._id}`;
 });
